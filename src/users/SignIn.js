@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { history } from '../store'
 import { Link } from 'react-router-dom'
+import { signInUser as signIn } from '../actions/user'
+import Title from '../components/Title'
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
-import signIn from '../actions/users/sign-in'
-import Title from '../components/Title'
 
 const dialogStyle = {
   width: '400px',
@@ -34,10 +33,6 @@ export class SignIn extends PureComponent {
       }
       this.props.signIn(user)
     }
-  }
-
-  signUp() {
-    history.push('/sign-up')
   }
 
   validateAll() {
@@ -97,29 +92,27 @@ export class SignIn extends PureComponent {
         <Title content="Sign In" />
 
         <form onSubmit={this.submitForm.bind(this)}>
-
          <div className="input">
-           <TextField ref="email" type="email" hintText="Email address" onChange={this.validateEmail.bind(this)} />
+            <TextField
+              type="email"
+              hintText="Email address" onChange={this.validateEmail.bind(this)}
+            />
            {this.state.emailError ? <p className="formError">{ this.state.emailError}</p> : null }
          </div>
-
          <div className="input">
-           <TextField ref="password" type="password" hintText="Password" onChange={this.validatePassword.bind(this)} />
+            <TextField
+              type="password"
+              hintText="Password" onChange={this.validatePassword.bind(this)}
+            />
            {this.state.passwordError ? <p className="formError">{ this.state.passwordError}</p> : null }
          </div>
-         <Link to="/sign-up">
-          <Button
-            color="primary"
-            onClick={ this.signUp }
-            label="Sign up" >
-          </Button>
-          </Link>
 
-         <Button raised color="primary"
-            style={ buttonStyle }
-            onClick={ this.submitForm.bind(this) }
-            label="Sign In"
-            primary={true} />
+          <Button type="submit" raised color="primary">
+            Sign In
+          </Button>
+          <Link to="/sign-up">
+            <Button>Sign up</Button>
+          </Link>
         </form>
       </Paper>
     )

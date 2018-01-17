@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
-import signUp from '../actions/users/sign-up'
+import { signUpUser as signUp } from '../actions/user'
 import Title from '../components/Title'
 
 const dialogStyle = {

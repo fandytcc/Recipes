@@ -11,7 +11,7 @@ export default class Routes extends Component {
   render() {
     return (
       <div>
-        <Route exact path="/recipes" component={RecipesContainer} />
+        <Route exact path="/" component={RecipesContainer} />
         <Route path="/recipes/:recipeId" component={RecipePage} />
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />

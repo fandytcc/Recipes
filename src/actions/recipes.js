@@ -17,7 +17,7 @@ export const createRecipe = (newRecipe) => {
 
 export const fetchRecipes = () => {
   return dispatch => {
-    const path = '/recipes'
+    const path = '/'
     dispatch(loading(path, true))
 
     api.get(path)
