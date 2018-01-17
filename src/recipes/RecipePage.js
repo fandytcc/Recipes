@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchRecipes } from '../actions/recipes'
+import { fetchRecipeById } from '../actions/recipes'
 import Title from '../components/Title'
 
 export class RecipePage extends PureComponent {
@@ -10,13 +10,12 @@ export class RecipePage extends PureComponent {
   }
 
   componentWillMount() {
-    this.props.fetchRecipes()
+    this.props.fetchRecipeById(this.props.match.params.recipeId)
   }
 
   render() {
-    const { title } = this.props
-
-    if (!title) return null
+    const { _id, title } = this.props
+    if (!_id) return null
 
     return(
       <div className="recipe page">
@@ -39,4 +38,4 @@ const mapStateToProps = ({ recipes }, { match }) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchRecipes })(RecipePage)
+export default connect(mapStateToProps, { fetchRecipeById })(RecipePage)

@@ -1,8 +1,22 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField'
+import Button from 'material-ui/Button'
 import signUp from '../actions/users/sign-up'
 import Title from '../components/Title'
+
+const dialogStyle = {
+  width: '400px',
+  margin: '50px auto',
+  padding: '2rem',
+}
+
+const buttonStyle = {
+  float: 'right',
+  marginLeft: '2rem',
+}
 
 export class SignUp extends PureComponent {
   constructor(){
@@ -109,33 +123,37 @@ export class SignUp extends PureComponent {
 
   render() {
     return (
-      <div className="sign-up form">
+      <Paper style={ dialogStyle }>
         <Title content="Sign Up" />
 
         <form onSubmit={this.submitForm.bind(this)}>
           <div className="input">
-            <input ref="name" type="text" placeholder="Your name" onChange={this.validateName.bind(this)} />
+            <TextField
+              ref="name"
+              type="text"
+              label="Your name" onChange={this.validateName.bind(this)}
+            />
             {this.state.nameError ? <p className="formError">{ this.state.nameError}</p> : null }
           </div>
 
          <div className="input">
-           <input ref="email" type="email" placeholder="Email address" onChange={this.validateEmail.bind(this)} />
+           <TextField ref="email" type="email" label="Email address" onChange={this.validateEmail.bind(this)} />
            {this.state.emailError ? <p className="formError">{ this.state.emailError}</p> : null }
          </div>
 
          <div className="input">
-           <input ref="password" type="password" placeholder="Password" onChange={this.validatePassword.bind(this)} />
+           <TextField ref="password" type="password" label="Password" onChange={this.validatePassword.bind(this)} />
            {this.state.passwordError ? <p className="formError">{ this.state.passwordError}</p> : null }
          </div>
 
          <div className="input">
-           <input ref="passwordConfirmation" type="password" placeholder="Repeat Password" onKeyUp={this.validatePasswordConfirmation.bind(this)}onChange={this.validatePasswordConfirmation.bind(this)} />
+           <TextField ref="passwordConfirmation" type="password" label="Repeat Password" onKeyUp={this.validatePasswordConfirmation.bind(this)}onChange={this.validatePasswordConfirmation.bind(this)} />
            {this.state.passwordConfirmationError ? <p className="formError">{ this.state.passwordConfirmationError}</p> : null }
          </div>
          <input type="submit" value="Sign up" />
         </form>
         <Link to="/sign-in">Sign In</Link>
-      </div>
+      </Paper>
     )
   }
 }

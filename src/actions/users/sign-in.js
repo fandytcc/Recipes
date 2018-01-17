@@ -1,5 +1,6 @@
 import ApiClient from '../../api/client'
 import { push } from 'react-router-redux'
+// import { loading } from './loading'
 
 export const USER_SIGN_IN = 'USER_SIGN_IN'
 
@@ -10,6 +11,7 @@ export default (user) => {
 
     api.post('sessions', { ...user })
       .then((res) => {
+        // dispatch(loading(path, true))
         api.storeToken(res.body.token)
         // localStorage.setItem('jwt', res.jwt)
 

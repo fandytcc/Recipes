@@ -75,6 +75,10 @@ export default class ApiClient {
     localStorage.setItem(this.options.tokenStorageKey, token)
   }
 
+  removeToken() {
+    localStorage.removeItem(this.options.tokenStorageKey)
+  }
+
   // Create a full URL to our API, including the host and path
   createUrl(path) {
     return `${this.host}${path}`

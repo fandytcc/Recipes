@@ -7,7 +7,7 @@ const api = new ApiClient()
 
 export default (user) => {
   return dispatch => {
-    api.signOut()
+    api.removeToken()
     dispatch(push('/sign-in'))
     dispatch({
       type: USER_SIGN_OUT

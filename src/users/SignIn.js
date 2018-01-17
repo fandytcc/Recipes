@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { history } from '../store'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
@@ -107,12 +107,15 @@ export class SignIn extends PureComponent {
            <TextField ref="password" type="password" hintText="Password" onChange={this.validatePassword.bind(this)} />
            {this.state.passwordError ? <p className="formError">{ this.state.passwordError}</p> : null }
          </div>
-
-         <Button
-            href="#flat-buttons"
+         <Link to="/sign-up">
+          <Button
+            color="primary"
             onClick={ this.signUp }
-            label="Sign up" />
-         <Button
+            label="Sign up" >
+          </Button>
+          </Link>
+
+         <Button raised color="primary"
             style={ buttonStyle }
             onClick={ this.submitForm.bind(this) }
             label="Sign In"
@@ -124,5 +127,3 @@ export class SignIn extends PureComponent {
 }
 
 export default connect(null, { signIn })(SignIn)
-
-// <Link to="/sign-up">Sign Up</Link>

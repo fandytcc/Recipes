@@ -51,7 +51,6 @@ class RecipeEditor extends PureComponent {
     })
   }
 
-
   setType(event) {
     this.setState({
       vegan: event.target.value === 'vegan',
@@ -71,7 +70,7 @@ class RecipeEditor extends PureComponent {
 
     console.table(recipe)
 
-    this.props.save(recipe)
+    this.props.createRecipe(recipe)
   }
 
   render() {
@@ -84,7 +83,7 @@ class RecipeEditor extends PureComponent {
           placeholder="Title"
           defaultValue={this.state.title}
           onChange={this.updateTitle.bind(this)}
-          onKeyUp={this.updateTitle.bind(this)} />
+          onKeyDown={this.updateTitle.bind(this)} />
 
         <Editor
           ref="summary"
@@ -101,7 +100,7 @@ class RecipeEditor extends PureComponent {
           placeholder="Photo URL"
           defaultValue={this.state.photo}
           onChange={this.updatePhoto.bind(this)}
-          onKeyUp={this.updatePhoto.bind(this)} />
+          onKeyDown={this.updatePhoto.bind(this)} />
 
         {TYPES.map((type) => {
           return <label key={type} htmlFor={type}>
@@ -118,6 +117,6 @@ class RecipeEditor extends PureComponent {
   }
 }
 
-const mapDispatchToProps = { save: createRecipe }
+const mapDispatchToProps = { createRecipe }
 
 export default connect(null, mapDispatchToProps)(RecipeEditor)
