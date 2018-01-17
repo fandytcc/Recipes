@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import Title from '../components/Title'
 import RecipeItem, { recipeShape } from './RecipeItem'
 import { fetchRecipes } from '../actions/recipes'
+import RecipeEditor from './RecipeEditor'
 import './RecipesContainer.css'
 
 class RecipesContainer extends PureComponent {
@@ -24,8 +25,10 @@ class RecipesContainer extends PureComponent {
   render() {
     return (
       <div className="recipes wrapper">
+        <RecipeEditor />
+
         <header>
-          <Title content="Recipes" />
+          <Title content="All Recipes" />
         </header>
 
         <main>

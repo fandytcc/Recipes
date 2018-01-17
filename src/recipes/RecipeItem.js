@@ -2,9 +2,11 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import RecipeCategory from './RecipeCategory'
 import LikeButton from '../components/LikeButton'
 import { toggleLikeRecipe } from '../actions/recipes'
+import Title from '../components/Title'
 import './RecipeItem.css'
 
 const PLACEHOLDER = 'http://via.placeholder.com/500x180?text=No%20Image'
@@ -32,7 +34,7 @@ class RecipeItem extends PureComponent {
   }
 
   render() {
-    const { title, summary, vegan, vegetarian, pescatarian, photo, liked } = this.props
+    const { title, summary, vegan, vegetarian, pescatarian, photo, liked, _id } = this.props
     const categories = { vegan, vegetarian, pescatarian }
 
     return(
@@ -42,7 +44,9 @@ class RecipeItem extends PureComponent {
             className="cover"
             style={{ backgroundImage: `url(${photo || PLACEHOLDER })` }} />
 
-          <h1>{title}</h1>
+          <Link to={`/recipes/${_id}`}>
+            <Title content={title} className="level-2" />
+          </Link>
 
           <ul className="categories">
             <RecipeCategory { ...categories } />

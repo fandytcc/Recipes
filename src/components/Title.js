@@ -1,7 +1,7 @@
 // src/components/Title.js
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import './Title.css'
+import './Title.sass'
 
 class Title extends PureComponent {
   static propTypes = {
@@ -10,7 +10,7 @@ class Title extends PureComponent {
 
   render() {
     return (
-      <h1 className="Title">{this.props.content}</h1>
+      <h2 className="Title">{this.props.content}</h2>
     )
   }
 }

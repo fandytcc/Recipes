@@ -1,9 +1,18 @@
 import ApiClient from '../api/client'
 import { loading, loadError } from './loading'
 
+export const CREATE_RECIPE = 'CREATE_RECIPE'
 export const FETCHED_RECIPES = 'FETCHED_RECIPES'
+export const TOGGLE_LIKE_RECIPE = 'TOGGLE_LIKE_RECIPE'
 
 const api = new ApiClient()
+
+export const createRecipe = (newRecipe) => {
+  return {
+    type: CREATE_RECIPE,
+    payload: newRecipe
+  }
+}
 
 export const fetchRecipes = () => {
   return dispatch => {
@@ -20,7 +29,7 @@ export const fetchRecipes = () => {
 
 export const toggleLikeRecipe = (recipeId) => {
   return {
-    type: 'TOGGLE_LIKE_RECIPE',
+    type: TOGGLE_LIKE_RECIPE,
     payload: recipeId
   }
 }
